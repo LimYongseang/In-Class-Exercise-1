@@ -1,0 +1,10 @@
+node_modules/
+public/uploads/
+.env
+.DS_Store
+coverage/
+.idea/
+.vscode/
+dist/
+npm-debug.log*
+yarn-error.log*

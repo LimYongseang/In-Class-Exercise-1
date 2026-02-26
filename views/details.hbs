@@ -1,0 +1,62 @@
+<div class="container" style="max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+    
+    <header style="margin-bottom: 20px;">
+        <a href="/dashboard" style="text-decoration: none;">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="report-card" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+        <h1>{{item.name}}</h1>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            {{#if item.imagePath}}
+                <img src="{{item.imagePath}}" alt="Item Image" style="max-width: 100%; max-height: 400px; border-radius: 4px;">
+            {{else}}
+                <p>No image uploaded.</p>
+            {{/if}}
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px; font-weight: bold;">Status:</td>
+                <td style="padding: 10px; color: {{#if (eq item.status 'Lost')}}red{{else}}green{{/if}};">
+                    {{item.status}}
+                </td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px; font-weight: bold;">Description:</td>
+                <td style="padding: 10px;">{{item.description}}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px; font-weight: bold;">Location:</td>
+                <td style="padding: 10px;">{{item.location}}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 10px; font-weight: bold;">Date:</td>
+                <td style="padding: 10px;">{{item.date}}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; font-weight: bold;">Contact:</td>
+                <td style="padding: 10px;">{{item.contact}}</td>
+            </tr>
+        </table>
+
+        <div class="actions" style="background: #f4f4f4; padding: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+            
+            <form action="/items/{{item.id}}/status" method="POST">
+                <label for="status"><strong>Update Status:</strong></label>
+                <select name="status" id="status" style="padding: 5px;">
+                    <option value="Lost" {{#if (eq item.status "Lost")}}selected{{/if}}>Lost</option>
+                    <option value="Found" {{#if (eq item.status "Found")}}selected{{/if}}>Found</option>
+                    <option value="Closed" {{#if (eq item.status "Closed")}}selected{{/if}}>Closed</option>
+                </select>
+                <button type="submit" style="padding: 5px 10px; cursor: pointer;">Update</button>
+            </form>
+
+            <form action="/items/{{item.id}}/delete" method="POST" onsubmit="return confirm('Are you sure? This cannot be undone.');">
+                <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                    Delete Report
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

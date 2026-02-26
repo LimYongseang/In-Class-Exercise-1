@@ -1,0 +1,36 @@
+{{!-- 
+  FILE: views/layouts/main.handlebars
+  PURPOSE: Main layout wrapper for all pages
+  TEACHING POINT: Layouts provide consistent structure across pages
+--}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    main { padding: 20px; max-width: 800px; margin: 0 auto; }
+    .pass { color: green; font-weight: bold; }
+    .fail { color: red; font-weight: bold; }
+    .sidebar { background-color: #f0f0f0; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0; }
+  </style>
+  {{!-- SECTION: Custom styles from child templates --}}
+  {{{_sections.styles}}}
+</head>
+<body>
+
+  {{> header}}
+
+  <main>
+    {{{body}}}
+  </main>
+  
+  {{!-- SECTION: Optional sidebar content from child templates --}}
+  {{!-- Child templates can define this using {{#section "sidebar"}} --}}
+  
+  {{!-- PARTIAL: Include reusable footer component --}}
+  {{> footer}}
+</body>
+</html>

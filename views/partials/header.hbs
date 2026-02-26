@@ -1,0 +1,20 @@
+{{!-- 
+  FILE: views/partials/header.handlebars
+  PURPOSE: Reusable header component
+  TEACHING POINT: Partials allow code reuse across multiple pages
+--}}
+<header style="background-color: #333; color: white; padding: 20px;">
+  {{!-- Display page title from context --}}
+  <h1>{{pageTitle}}</h1>
+  
+  {{!-- Navigation menu with active tab highlighting --}}
+  <nav style="margin-top: 10px;">
+    {{#if isHomePage}}
+      <a href="/" style="color: white; margin-right: 15px; text-decoration: none; border-bottom: 3px solid white; padding-bottom: 5px; font-weight: bold;">🏠 Home</a>
+      <a href="/students" style="color: white; text-decoration: none;">👨‍🎓 Students</a>
+    {{else}}
+      <a href="/" style="color: white; margin-right: 15px; text-decoration: none;">🏠 Home</a>
+      <a href="/students" style="color: white; text-decoration: none; border-bottom: 3px solid white; padding-bottom: 5px; font-weight: bold;">👨‍🎓 Students</a>
+    {{/if}}
+  </nav>
+</header>

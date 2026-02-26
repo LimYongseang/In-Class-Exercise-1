@@ -1,44 +1,55 @@
-<h1>{{pageTitle}}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>{{pageTitle}}</title>
+</head>
+<body>
 
-{{#if items}}
-  <table style="width: 100%; border-collapse: collapse;">
-    <thead>
-      <tr style="background-color: #333; color: white;">
-        <th style="padding: 10px;">ID</th>
-        <th style="padding: 10px;">Name</th>
-        <th style="padding: 10px;">Description</th>
-        <th style="padding: 10px;">Location</th>
-        <th style="padding: 10px;">Date</th>
-        <th style="padding: 10px;">Contact</th>
-        <th style="padding: 10px;">Image</th>
-        <th style="padding: 10px;">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each items}}
-        <tr style="border-bottom: 1px solid #ddd;">
-          <td style="padding: 10px;">{{this.id}}</td>
-          <td style="padding: 10px;">{{this.name}}</td>
-          <td style="padding: 10px;">{{this.description}}</td>
-          <td style="padding: 10px;">{{this.location}}</td>
-          <td style="padding: 10px;">{{this.date}}</td>
-          <td style="padding: 10px;">{{this.contact}}</td>
-          <td style="padding: 10px;">
-            <img src="{{this.imagePath}}" alt="{{this.name}}" style="width: 60px; height: 60px; object-fit: cover;" />
-          </td>
-          <td style="padding: 10px;">
-            {{#if (eq this.status 'Lost')}}
-              <span style="color: red;">🔴 Lost</span>
-            {{else if (eq this.status 'Found')}}
-              <span style="color: green;">🟢 Found</span>
-            {{else}}
-              <span style="color: gray;">⚫ Closed</span>
-            {{/if}}
-          </td>
+  <h1>{{pageTitle}}</h1>
+
+  {{#if items}}
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #333; color: white;">
+          <th style="padding: 10px;">ID</th>
+          <th style="padding: 10px;">Name</th>
+          <th style="padding: 10px;">Description</th>
+          <th style="padding: 10px;">Location</th>
+          <th style="padding: 10px;">Date</th>
+          <th style="padding: 10px;">Contact</th>
+          <th style="padding: 10px;">Image</th>
+          <th style="padding: 10px;">Status</th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <p>No items found.</p>
-{{/if}}
+      </thead>
+      <tbody>
+        {{#each items}}
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;">{{this.id}}</td>
+            <td style="padding: 10px;">{{this.name}}</td>
+            <td style="padding: 10px;">{{this.description}}</td>
+            <td style="padding: 10px;">{{this.location}}</td>
+            <td style="padding: 10px;">{{this.date}}</td>
+            <td style="padding: 10px;">{{this.contact}}</td>
+            <td style="padding: 10px;">
+              <img src="{{this.imagePath}}" alt="{{this.name}}" style="width: 60px; height: 60px; object-fit: cover;" />
+            </td>
+            <td style="padding: 10px;">
+              {{#if (eq this.status 'Lost')}}
+                <span style="color: red;">🔴 Lost</span>
+              {{else if (eq this.status 'Found')}}
+                <span style="color: green;">🟢 Found</span>
+              {{else}}
+                <span style="color: gray;">⚫ Closed</span>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No items found.</p>
+  {{/if}}
+
+</body>
+</html>
